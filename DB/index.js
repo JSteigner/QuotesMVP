@@ -11,4 +11,6 @@ connection.connect((err) => {
     console.log('error connecting to DB');
   }
   console.log('DB connected');
-})
+});
+
+module.exports = connection;
