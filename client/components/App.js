@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import KanyeButton from './KanyeButton.js';
+import createQuote from './CreateQuote.js';
+import CreateQuote from './CreateQuote.js';
 
 class App extends Component {
   constructor(props) {
@@ -19,8 +21,8 @@ class App extends Component {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
       },
-    }
-      )
+     }
+    )
       .then(quotes => {
         console.log(quotes);
         this.setState({kanyeQuotes: quotes.data.quote});
@@ -36,7 +38,6 @@ class App extends Component {
       },
     })
   }
-
   
   render() {
     const { kanyeQuotes } = this.state;
@@ -44,6 +45,10 @@ class App extends Component {
       <div>
         <h1>Check out some Kanye West Quotes!</h1>
         <KanyeButton getKanyeQuotes={this.getKanyeQuotes} kanyeQuotes={kanyeQuotes} />
+        <br />
+        <br />
+        <h2>Create your own quote!</h2>
+        <CreateQuote createQuote={this.createQuote} />
       </div>
     ); 
   } 

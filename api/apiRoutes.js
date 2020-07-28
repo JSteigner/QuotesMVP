@@ -5,7 +5,7 @@ const { Quote } = require('../DB');
 const cors = require('cors');
 
 // create a get route to get quotes
-apiRouter.get('/', cors(), (req, res) => {
+apiRouter.get('/', (req, res) => {
   console.log('hiii');
   return axios.get('https://api.kanye.rest', {
     headers: {
@@ -26,8 +26,8 @@ apiRouter.get('/', cors(), (req, res) => {
 // create post route to create quotes/jokes
 apiRouter.post('/', (req, res) => {
   const { username, quote } = req.body;
-
-  Quote.create({ username: 'homeboy', quote: `its all good`})
+  console.log(req.body);
+  Quote.create({ username, quote })
     .then(newQuote => {
       console.log('quote was created');
       res.status(201).send(newQuote);
