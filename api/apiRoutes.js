@@ -1,7 +1,6 @@
 const express = require('express');
 const apiRouter = express.Router();
 const axios = require('axios');
-const { postQuote } = require('../DB/dbApiHelpers');
 const { Quote } = require('../DB');
 
 // create a get route to get quotes
@@ -86,7 +85,6 @@ apiRouter.delete('/:id', (req, res) => {
       res.sendStatus(500);
     });
 });
-
 
 module.exports = {
   apiRouter
