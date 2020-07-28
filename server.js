@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use('/api', apiRouter);
 
-const PORT = process.env.PORT;
+const PORT = 3000;
 
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);

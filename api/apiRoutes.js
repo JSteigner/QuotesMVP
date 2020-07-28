@@ -1,6 +1,7 @@
 const express = require('express');
 const apiRouter = express.Router();
 const axios = require('axios');
+const { postQuote } = require('../DB/dbApiHelpers');
 
 // create a get route to get quotes
 apiRouter.get('/', (req, res) => {
@@ -17,7 +18,9 @@ apiRouter.get('/', (req, res) => {
 
 // create post route to create quotes/jokes
 apiRouter.post('/', (req, res) => {
-  
+  console.log('post');
+  postQuote(`ohhhh yeah`);
+  res.send('post');
 });
 
 

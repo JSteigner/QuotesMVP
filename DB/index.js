@@ -13,4 +13,6 @@ connection.connect((err) => {
   console.log('DB connected');
 });
 
-module.exports = connection;
+module.exports = {
+  connection
+};
