@@ -8,7 +8,7 @@ class CreateQuote extends React.Component {
       username: '',
       newQuote: ''
     };
-    
+
     this.createNewQuote = this.createNewQuote.bind(this);
     this.createUserName = this.createUserName.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -35,12 +35,12 @@ class CreateQuote extends React.Component {
   render() {
     return (
       <div>
+        <h2>Create your own quote!</h2>
         <h3>enter username</h3>
         <input 
           type='text'
           onChange={this.createUserName}
         />
-        <br />
         <br />
         <h3>enter quote</h3>
         <input 

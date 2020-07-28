@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import KanyeAndCreateQuote from './KanyeAndCreateQuote';
 import KanyeButton from './KanyeButton.js';
-import createQuote from './CreateQuote.js';
 import CreateQuote from './CreateQuote.js';
 
 class App extends Component {
@@ -42,14 +44,15 @@ class App extends Component {
   render() {
     const { kanyeQuotes } = this.state;
     return (
-      <div>
-        <h1>Check out some Kanye West Quotes!</h1>
-        <KanyeButton getKanyeQuotes={this.getKanyeQuotes} kanyeQuotes={kanyeQuotes} />
-        <br />
-        <br />
-        <h2>Create your own quote!</h2>
-        <CreateQuote createQuote={this.createQuote} />
-      </div>
+      <main>
+        {/* <Switch> */}
+          <KanyeAndCreateQuote getKanyeQuotes={this.getKanyeQuotes} kanyeQuotes={kanyeQuotes} createQuote={this.createQuote} />
+          {/* <KanyeButton getKanyeQuotes={this.getKanyeQuotes} kanyeQuotes={kanyeQuotes} />
+          <br />
+          <br />
+          <CreateQuote createQuote={this.createQuote} /> */}
+        {/* </Switch> */}
+      </main>
     ); 
   } 
 } 
