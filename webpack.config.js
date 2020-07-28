@@ -1,14 +1,14 @@
 module.exports = {
-  entry: "./client/index",
+  entry: './client/index',
   output: {
-    filename: "bundle.js"
+    filename: 'bundle.js'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: 'babel-loader'
       }
     ]
   }

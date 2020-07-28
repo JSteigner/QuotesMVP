@@ -1,11 +1,18 @@
-const express = require('express');
-const apiRouter = express.Router();
+const { Router } = require('express');
+const apiRouter = Router();
 const axios = require('axios');
 const { Quote } = require('../DB');
+const cors = require('cors');
 
 // create a get route to get quotes
-apiRouter.get('/', (req, res) => {
-  axios.get('https://api.kanye.rest')
+apiRouter.get('/', cors(), (req, res) => {
+  console.log('hiii');
+  return axios.get('https://api.kanye.rest', {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  })
     .then(quote => {
       console.log('successful request');
       res.send(quote.data);
