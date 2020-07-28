@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { db } = require('./DB/index');
+const { sequelize } = require('./DB/index');
 const express = require('express');
 const { apiRouter } = require('./api/apiRoutes');
 

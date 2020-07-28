@@ -1,7 +1,7 @@
-const { connection } = require('./index');
+const { db } = require('./index');
 
 const postQuote = (quote) => {
-  return connection.query(`insert into quote (quote) values ('${quote}')`);
+  return db.query(`insert into quote (quote) values ('${quote}')`);
 };
 
 

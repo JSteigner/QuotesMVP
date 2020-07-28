@@ -23,6 +23,17 @@ apiRouter.post('/', (req, res) => {
   res.send('post');
 });
 
+// create put route to update quote
+apiRouter.put('/:id', (req, res) => {
+  console.log('put');
+  res.send('put');
+});
+
+// create delete route to remove quote
+apiRouter.delete('/:id', (req, res) => {
+
+});
+
 
 module.exports = {
   apiRouter
