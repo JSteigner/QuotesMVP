@@ -16,8 +16,8 @@ const Quote = sequelize.define('Quote', {
   quote: Sequelize.STRING,
 });
 
-Quote.sync({force: true}).then(() => {
-  console.log('quote table was created');
+Quote.sync().then(() => {
+  console.log('Quote table was created');
 });
 
 // const db = mysql.createConnection({
@@ -35,5 +35,6 @@ Quote.sync({force: true}).then(() => {
 // });
 
 module.exports = {
-  sequelize
+  sequelize,
+  Quote
 };
