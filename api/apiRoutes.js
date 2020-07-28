@@ -15,7 +15,12 @@ apiRouter.get('/', (req, res) => {
     });
 });
 
+// create post route to create quotes/jokes
+apiRouter.post('/', (req, res) => {
+  
+});
+
 
 module.exports = {
   apiRouter
-}
+};
