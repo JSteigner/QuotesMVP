@@ -44,6 +44,7 @@ class ShowUserQuoteListItem extends React.Component{
             <input
               type='text'
               value={updatedUsername}
+              placeholder="update username"
               onChange={this.updateUsername}
             /> 
             <button onClick={this.handleSubmit}>update</button>
@@ -54,14 +55,15 @@ class ShowUserQuoteListItem extends React.Component{
             <input
               type='text'
               value={updatedQuote}
+              placeholder="update quote"
               onChange={this.updateQuote}
             /> 
             <button onClick={() => handleDelete(userQuote.id)}>x</button>
         </div>
         <br />
       </div>
-  );
- }
+    );
+  }
 };
 
 export default ShowUserQuoteListItem;

@@ -42,12 +42,14 @@ class CreateQuote extends React.Component {
         <input 
           type='text'
           value={username}
+          placeholder="enter username"
           onChange={this.createUserName}
         />
         <h3>enter quote:</h3>
         <input 
           type='text'
           value={newQuote}
+          placeholder="enter quote"
           onChange={this.createNewQuote}
         />
         <button onClick={this.handleClick}>click to create your quote!</button>

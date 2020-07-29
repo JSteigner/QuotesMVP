@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 import KanyeAndCreateQuote from './KanyeAndCreateQuote';
 import ShowUserQuotesList from './ShowUserQuotesList';
@@ -66,25 +66,31 @@ class App extends Component {
   render() {
     const { kanyeQuotes, userQuotes } = this.state;
     return (
-      <main>
-        {/* <Switch> */}
-          <KanyeAndCreateQuote 
-            getKanyeQuotes={this.getKanyeQuotes} 
-            kanyeQuotes={kanyeQuotes} 
-            createQuote={this.createQuote} 
-          />
-          <br />
-          <button onClick={this.getUserQuotes}>click to see all the user quotes</button>
-          <ShowUserQuotesList 
-            userQuotes={userQuotes}
-            handleDelete={this.deleteQuote}
-            handleUpdate={this.updateQuote} 
-          />
-          {/* <Route path='/' */}
-        {/* </Switch> */}
-      </main>
+      // <BrowserRouter>
+        <main>
+          {/* <div> */}
+            {/* <div><Link to="/main">Main</Link></div>
+            <div><Link to="/userquotes">User Quotes</Link></div>
+          </div> */}
+          {/* <Switch> */}
+            <KanyeAndCreateQuote 
+              getKanyeQuotes={this.getKanyeQuotes} 
+              kanyeQuotes={kanyeQuotes} 
+              createQuote={this.createQuote} 
+            />
+            <br />
+            <button onClick={this.getUserQuotes}>click to see all the user quotes</button>
+            <ShowUserQuotesList 
+              userQuotes={userQuotes}
+              handleDelete={this.deleteQuote}
+              handleUpdate={this.updateQuote} 
+            /> 
+            {/* /> */}
+          {/* </Switch> */}
+        </main>
+      // </BrowserRouter>
     ); 
   } 
-} 
+};
 
 export default App;

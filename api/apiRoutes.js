@@ -25,7 +25,7 @@ apiRouter.get('/', (req, res) => {
 // create post route to create quotes/jokes
 apiRouter.post('/', (req, res) => {
   const { username, quote } = req.body;
-  console.log(req.body);
+  
   Quote.create({ username, quote })
     .then(newQuote => {
       console.log('quote was created');
