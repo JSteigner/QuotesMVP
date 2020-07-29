@@ -15,6 +15,7 @@ class App extends Component {
     
     this.getKanyeQuotes = this.getKanyeQuotes.bind(this);
     this.getUserQuotes = this.getUserQuotes.bind(this);
+    this.updateQuote = this.updateQuote.bind(this);
     this.deleteQuote = this.deleteQuote.bind(this);
   };
 
@@ -54,8 +55,8 @@ class App extends Component {
     })
   }
 
-  updateQuote(id) {
-    axios.put(`http://localhost:3000/api/${id}`)
+  updateQuote(id, username, quote) {
+    axios.put(`http://localhost:3000/api/${id}`, {username, quote})
   }
 
   deleteQuote(id) {
@@ -76,7 +77,8 @@ class App extends Component {
           <button onClick={this.getUserQuotes}>click to see all the user quotes</button>
           <ShowUserQuotesList 
             userQuotes={userQuotes}
-            handleDelete={this.deleteQuote} 
+            handleDelete={this.deleteQuote}
+            handleUpdate={this.updateQuote} 
           />
           {/* <Route path='/' */}
         {/* </Switch> */}

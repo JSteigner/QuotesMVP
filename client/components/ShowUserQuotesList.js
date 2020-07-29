@@ -1,7 +1,7 @@
 import React from 'react';
 import ShowUserQuoteListItem from './ShowUserQuoteListItem';
 
-const ShowUserQuotesList = ({ userQuotes, handleDelete }) => (
+const ShowUserQuotesList = ({ userQuotes, handleDelete, handleUpdate }) => (
   <div>
     {userQuotes.map(userQuote => {
       return (
@@ -9,6 +9,7 @@ const ShowUserQuotesList = ({ userQuotes, handleDelete }) => (
         key={userQuote.id} 
         userQuote={userQuote} 
         handleDelete={handleDelete}
+        handleUpdate={handleUpdate}
       />
       )  
     })}
