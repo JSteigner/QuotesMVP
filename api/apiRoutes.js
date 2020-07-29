@@ -6,13 +6,12 @@ const cors = require('cors');
 
 // create a get route to get quotes
 apiRouter.get('/', (req, res) => {
-  console.log('hiii');
-  return axios.get('https://api.kanye.rest', {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  })
+  return axios.get('https://api.kanye.rest'
+    // headers: {
+    //   'Content-Type': 'application/json',
+    //   'Access-Control-Allow-Origin': '*',
+    // },
+  )
     .then(quote => {
       console.log('successful request');
       res.send(quote.data);
@@ -37,16 +36,34 @@ apiRouter.post('/', (req, res) => {
     });
 });
 
+// create get route to get all user quotes
+apiRouter.get('/userquotes', (req, res) => {
+  Quote.findAll()
+    .then(quotes => {
+      if (quotes) {
+        console.log('successful request');
+        res.send(quotes);
+        return;
+      }
+      console.error('there was an error with the request');
+      res.sendStatus(500);
+    })
+    .catch(err => {
+      console.error(err, 'there was an error processing the request');
+      res.sendStatus(500);
+    });
+});
+
 // create put route to update quote
 apiRouter.put('/:id', (req, res) => {
  
   const { id } = req.params;
-  const { quote } = req.body;
+  const { username, quote } = req.body;
 
   Quote.findById(id)
     .then(foundQuote => {
       if (foundQuote) {
-        return Quote.update({quote}, {where: { id: id }})
+        return Quote.update({username, quote}, {where: { id: id }})
           .then(() => {
             console.log('quote was updated');
             res.send('quote was updated');

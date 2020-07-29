@@ -36,19 +36,16 @@ class CreateQuote extends React.Component {
     return (
       <div>
         <h2>Create your own quote!</h2>
-        <h3>enter username</h3>
+        <h3>enter username:</h3>
         <input 
           type='text'
           onChange={this.createUserName}
         />
-        <br />
-        <h3>enter quote</h3>
+        <h3>enter quote:</h3>
         <input 
           type='text'
           onChange={this.createNewQuote}
         />
-        <br />
-        <br />
         <button onClick={this.handleClick}>click to create your quote!</button>
       </div>
     )

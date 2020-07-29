@@ -3,54 +3,82 @@ import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import KanyeAndCreateQuote from './KanyeAndCreateQuote';
-import KanyeButton from './KanyeButton.js';
-import CreateQuote from './CreateQuote.js';
+import ShowUserQuotesList from './ShowUserQuotesList';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      kanyeQuotes: ''
+      kanyeQuotes: '',
+      userQuotes:[]
     };
     
     this.getKanyeQuotes = this.getKanyeQuotes.bind(this);
+    this.getUserQuotes = this.getUserQuotes.bind(this);
+    this.deleteQuote = this.deleteQuote.bind(this);
   };
 
   getKanyeQuotes() {
     // console.log('clicked');
-      axios.get('http://localhost:3000/api/', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-     }
-    )
+      axios.get('http://localhost:3000/api/'
+      // headers: {
+      //   'Content-Type': 'application/json',
+      //   'Access-Control-Allow-Origin': '*',
+      // },
+     )
       .then(quotes => {
-        console.log(quotes);
         this.setState({kanyeQuotes: quotes.data.quote});
       })
       .catch(err => console.error(err));
   }
 
+  getUserQuotes() {
+    axios.get('http://localhost:3000/api/userquotes', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+    .then(quotes => {
+      this.setState({userQuotes: quotes.data});
+    })
+    .catch(err => console.error(err));
+  }
+
   createQuote(username, quote) {
-    return axios.post('http://localhost:3000/api/', {username, quote}, {
+    axios.post('http://localhost:3000/api/', {username, quote}, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
       },
     })
   }
+
+  updateQuote(id) {
+    axios.put(`http://localhost:3000/api/${id}`)
+  }
+
+  deleteQuote(id) {
+    axios.delete(`http://localhost:3000/api/${id}`)
+  }
   
   render() {
-    const { kanyeQuotes } = this.state;
+    const { kanyeQuotes, userQuotes } = this.state;
     return (
       <main>
         {/* <Switch> */}
-          <KanyeAndCreateQuote getKanyeQuotes={this.getKanyeQuotes} kanyeQuotes={kanyeQuotes} createQuote={this.createQuote} />
-          {/* <KanyeButton getKanyeQuotes={this.getKanyeQuotes} kanyeQuotes={kanyeQuotes} />
+          <KanyeAndCreateQuote 
+            getKanyeQuotes={this.getKanyeQuotes} 
+            kanyeQuotes={kanyeQuotes} 
+            createQuote={this.createQuote} 
+          />
           <br />
-          <br />
-          <CreateQuote createQuote={this.createQuote} /> */}
+          <button onClick={this.getUserQuotes}>click to see all the user quotes</button>
+          <ShowUserQuotesList 
+            userQuotes={userQuotes}
+            handleDelete={this.deleteQuote} 
+          />
+          {/* <Route path='/' */}
         {/* </Switch> */}
       </main>
     ); 

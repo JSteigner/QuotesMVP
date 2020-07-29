@@ -5,7 +5,6 @@ const KanyeButton = ({ getKanyeQuotes, kanyeQuotes }) => (
     <h1>Check out some Kanye West Quotes!</h1>
     <button onClick={getKanyeQuotes}>Click to see some Kanye Quotes!</button>
     <br />
-    <br />
     <div>{kanyeQuotes}</div>
   </div>
 );
